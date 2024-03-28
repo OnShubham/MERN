@@ -1,0 +1,11 @@
+// Router
+
+// 1 way to write a router
+router.get("/reg", (req, res) => {
+res.status(200).send("Welcome Server is Running");
+});
+
+// secound way to write a router
+router.route("/login").get((req, res) => {
+res.status(200).send("hey");
+});
