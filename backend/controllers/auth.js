@@ -1,14 +1,5 @@
 const User = require("../Models/user-models");
-
-
-const login = async (req, res) => {
-  try {
-    res.status(200).send("Welcome Server is Running");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
+const bcrypt = require("bcryptjs");
 // Register
 const register = async (req, res) => {
   try {
@@ -32,10 +23,43 @@ const register = async (req, res) => {
       username,
       email,
       phone,
-      password
+      password,
     });
 
-    res.status(200).send({ msg: userCreated });
+    res.status(200).send({
+      msg: "Register Succes",
+      token: await userCreated.generateToken(),
+      userID: userCreated._id.toString(),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Login
+
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const userExists = await User.findOne({ email });
+    console.log(userExists);
+
+    if (!userExists) {
+      return res.status(400).json({ msg: "Invalid Credentials" });
+    }
+
+    const user = await bcrypt.compare(password, userExists.password);
+
+    if (user) {
+      res.status(200).send({
+        msg: "Login Succes",
+        token: await userExists.generateToken(),
+        userID: userExists._id.toString(),
+      });
+    } else {
+      res.status(401).json({ msg: "Invalid email or pass" });
+    }
   } catch (error) {
     console.log(error);
   }
