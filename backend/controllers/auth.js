@@ -1,5 +1,6 @@
 const User = require("../Models/user-models");
 
+
 const login = async (req, res) => {
   try {
     res.status(200).send("Welcome Server is Running");
@@ -20,8 +21,19 @@ const register = async (req, res) => {
       return res.status(400).json({ msg: "email already exists" });
     }
 
+    // phone number
+
+    // hash the pass  Secuare the password
+    // const saltRound = 10;
+    // const hash_password = await bcrypt.hash(password, saltRound);
+
     // Done Register Acoount
-    const userCreated = await User.create({ username, email, phone, password });
+    const userCreated = await User.create({
+      username,
+      email,
+      phone,
+      password
+    });
 
     res.status(200).send({ msg: userCreated });
   } catch (error) {
