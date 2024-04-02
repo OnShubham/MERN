@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
+const URL = "http://localhost:5000/api/auth/login";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,15 +20,32 @@ export const Login = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
-    setFormData({
-      email: "",
-      password: "",
-    });
-    console.log(alert("Logged in Successfully"));
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log("login", response);
+
+      if (response.ok) {
+        alert("Login successful");
+        setFormData({ email: "", password: "" });
+        navigate("/");
+      } else {
+        alert("Invalid credentials");
+        console.log("Login", response);
+      }
+    } catch (error) {
+      console.log("Login", error);
+    }
   };
   return (
     <div className="container">
