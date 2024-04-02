@@ -1,0 +1,36 @@
+.container {
+  max-width: 144rem;
+  padding: 4.2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+
+  font-size: large;
+}
+li {
+  list-style: none;
+}
+
+* {
+  color: aliceblue;
+}
+
+.active {
+  color: rgb(0, 0, 0);
+}
+.navbar-brand,
+.nav-link {
+  color: white !important; /* Set text color to white */
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+  color: blue !important; /* Set hover color to blue */
+  
+}
+
