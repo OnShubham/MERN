@@ -9,6 +9,7 @@ import { Services } from "./Page/Services";
 import { Navbar } from "./Components/Navbar";
 import { Error404 } from "./Page/Error";
 import { Footer } from "./Components/Footer";
+import { Logout } from "./Page/Logout";
 
 const App = () => {
   return (
@@ -22,6 +23,9 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/services" element={<Services />} />
+
+          <Route path="/logout" element={<Logout />} />
+
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />

@@ -4,9 +4,12 @@ import App from "./App.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import { AuthProvider } from "./store/auth.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <AuthProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </AuthProvider>
 );

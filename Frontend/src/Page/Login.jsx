@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 const URL = "http://localhost:5000/api/auth/login";
 
@@ -11,6 +12,7 @@ export const Login = () => {
   });
 
   const navigate = useNavigate();
+  const { storeTokenInLS } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +38,10 @@ export const Login = () => {
       console.log("login", response);
 
       if (response.ok) {
+        const data = await response.json();
+
+        storeTokenInLS(data.token);
+
         alert("Login successful");
         setFormData({ email: "", password: "" });
         navigate("/");

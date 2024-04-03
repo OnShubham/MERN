@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 
+import { useNavigate } from "react-router-dom";
+
+import { useAuth } from "../store/auth";
+
+
+
 export const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -8,6 +14,13 @@ export const Register = () => {
     email: "",
     password: "",
   });
+
+
+  
+
+
+  const navigate = useNavigate();
+  const { storeTokenInLS } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +43,24 @@ export const Register = () => {
         body: JSON.stringify(formData),
       });
 
-      console.log(response);
+      if (response.ok) {
+
+        const data = await response.json();
+        console.log( " res from server", data);
+    
+        alert("Register successful");
+        storeTokenInLS(data.token);
+        setFormData({
+          username: "",
+          phone: "",
+          email: "",
+          password: "",
+        });
+        navigate("/login");
+      } else {
+        alert("Invalid credentials");
+        console.log("Register", response);
+      }
     } catch (error) {
       console.log("Register", error);
     }
