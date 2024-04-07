@@ -5,6 +5,7 @@ export const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -16,21 +17,40 @@ export const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can implement the functionality to send the form data
     console.log(formData);
-    // Reset form fields after submission
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/form/contact`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(" res from server", data);
+
+        alert("Message Sent");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.log("Register", error);
+    }
   };
 
   return (
     <div className="container mt-5">
       <Form onSubmit={handleSubmit} className="justify-content-center">
+        {/* name */}
         <Form.Group controlId="formName">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -43,6 +63,21 @@ export const Contact = () => {
           />
         </Form.Group>
 
+        {/* phone */}
+
+        <Form.Group controlId="fromphone">
+          <Form.Label>Phone</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter your Number"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        {/* email */}
         <Form.Group controlId="formEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -54,6 +89,8 @@ export const Contact = () => {
             required
           />
         </Form.Group>
+
+        {/* message */}
 
         <Form.Group controlId="formMessage">
           <Form.Label>Message</Form.Label>
@@ -67,6 +104,8 @@ export const Contact = () => {
             required
           />
         </Form.Group>
+
+        <br />
 
         <Button variant="primary" type="submit">
           Send
