@@ -5,21 +5,20 @@ const ConnectDB = require("./util/db");
 
 const authRouter = require("./router/auth");
 const ContactRouter = require("./router/contact-router");
+const ServicesRouter = require("./router/serivices-router");
 
 const errorMiddleware = require("./middleware/error-middleware");
 
 const app = express();
 
-app.use(cors( corsOptions));
+app.use(cors(corsOptions));
 
 var corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: "http://localhost:5173",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 app.use(express.json());
 app.use(errorMiddleware);
@@ -27,6 +26,7 @@ app.use(errorMiddleware);
 // define a router
 app.use("/api/auth", authRouter);
 app.use("/api/form", ContactRouter);
+app.use("/api/data", ServicesRouter);
 
 app.get("/", (req, res) => {
   res.status(200).send("Welcome ");
