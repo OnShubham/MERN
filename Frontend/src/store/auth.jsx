@@ -12,6 +12,9 @@ export const AuthProvider = ({ children }) => {
     return localStorage.setItem("token", serverToken);
   };
 
+
+
+
   //   this is the get the value in either true or false in the original state of token
   let isLoggedIn = !!token;
   console.log("token", token);
@@ -29,6 +32,9 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+
+
 
 export const useAuth = () => {
   const authContextValue = useContext(AuthContext);
