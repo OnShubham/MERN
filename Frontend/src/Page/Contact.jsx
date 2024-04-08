@@ -128,9 +128,14 @@ export const Contact = () => {
 
               <br />
 
-              <Button variant="primary" type="submit">
-                Send
-              </Button>
+              <Button
+              variant="primary"
+              className="fs-2"
+              style={{ width: "100%", height: "5rem" }}
+              type="submit"
+            >
+              Sent
+            </Button>
             </Form>
           </Col>
         </Row>
