@@ -9,7 +9,7 @@ export const Navbar = () => {
   console.log("Login status: ", isLoggedIn);
 
   return (
-    <BootstrapNavbar bg="dark" expand="lg">
+    <BootstrapNavbar bg="black" expand="lg">
       <div className="container">
         <BootstrapNavbar.Brand as={NavLink} to="/" className="navbar-brand text-white">
            <FaReact />  Tech-Tide

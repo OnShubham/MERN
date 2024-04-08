@@ -22,12 +22,10 @@ export const Services = () => {
 
   return (
     <div className="container">
-      
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gap-5 m-2">
-        
         {services.map((service, index) => (
           <div className="col" key={index}>
-            <Card className="border-0">
+            <Card className="border-0 custom-card">
               <Card.Img
                 variant="top"
                 src={"images/design.png"}
@@ -35,7 +33,7 @@ export const Services = () => {
                 style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "" }}
                 alt="Card image"
               />
-              <Card.Body className="p-3">
+              <Card.Body className="p-3 ">
                 <Row>
                   {/* Left side: Title and Description */}
                   <Col md={6}>
