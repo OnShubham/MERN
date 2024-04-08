@@ -11,8 +11,12 @@ export const Navbar = () => {
   return (
     <BootstrapNavbar bg="black" expand="lg">
       <div className="container">
-        <BootstrapNavbar.Brand as={NavLink} to="/" className="navbar-brand text-white">
-           <FaReact />  Tech-Tide
+        <BootstrapNavbar.Brand
+          as={NavLink}
+          to="/"
+          className="navbar-brand text-white"
+        >
+          <FaReact /> Tech-Tide
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse

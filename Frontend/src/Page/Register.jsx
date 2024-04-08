@@ -4,6 +4,7 @@ import {} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ export const Register = () => {
         const data = await response.json();
         console.log(" res from server", data);
 
-        alert("Register successful");
+        toast.success("Register successful");
         storeTokenInLS(data.token);
         setFormData({
           username: "",
@@ -51,7 +52,7 @@ export const Register = () => {
         });
         navigate("/login");
       } else {
-        alert("Invalid credentials");
+        toast.error("Invalid credentials");
         console.log("Register", response);
       }
     } catch (error) {

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
-import {  } from "react-icons/fa";
+import {} from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const URL = "http://localhost:5000/api/auth/login";
 
@@ -43,11 +44,11 @@ export const Login = () => {
 
         storeTokenInLS(data.token);
 
-        alert("Login successful");
+        toast.success("Login successful");
         setFormData({ email: "", password: "" });
         navigate("/");
       } else {
-        alert("Invalid credentials");
+        toast.error("Invalid credentials");
         console.log("Login", response);
       }
     } catch (error) {
@@ -71,10 +72,10 @@ export const Login = () => {
           className="shadow"
         >
           <Form onSubmit={handleSubmit} className="p-4" style={{}}>
-          <h1 style={{ fontSize: "5rem" }}>Login </h1>
+            <h1 style={{ fontSize: "5rem" }}>Login </h1>
             <div className="fs-5">
               <Form.Group controlId="formEmail">
-                <Form.Label  className="fs-3 mb-2">Email address</Form.Label>
+                <Form.Label className="fs-3 mb-2">Email address</Form.Label>
                 <Form.Control
                   type="email"
                   className="fs-3 mb-2"
@@ -86,7 +87,7 @@ export const Login = () => {
               </Form.Group>
 
               <Form.Group controlId="formPassword">
-                <Form.Label  className="fs-3 mb-2">Password</Form.Label>
+                <Form.Label className="fs-3 mb-2">Password</Form.Label>
                 <Form.Control
                   type="password"
                   className="fs-3 mb-2"
@@ -105,8 +106,7 @@ export const Login = () => {
               style={{ width: "100%", height: "5rem" }}
               type="Login"
             >
-              Login 
-
+              Login
             </Button>
           </Form>
         </Col>

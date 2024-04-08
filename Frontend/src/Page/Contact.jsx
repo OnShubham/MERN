@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Image, Button, Container, Row, Col } from "react-bootstrap";
 import {} from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ export const Contact = () => {
         const data = await response.json();
         console.log(" res from server", data);
 
-        alert("Message Sent");
+        toast.success("Message Sent");
         setFormData({
           name: "",
           email: "",
@@ -61,7 +62,7 @@ export const Contact = () => {
 
           {/* Column with Form */}
           <Col md={6} className="p-5 ">
-            <h1 style={{fontSize:"5rem"}}>Contact </h1>
+            <h1 style={{ fontSize: "5rem" }}>Contact </h1>
             <Form
               onSubmit={handleSubmit}
               className="justify-content-center gap-2"

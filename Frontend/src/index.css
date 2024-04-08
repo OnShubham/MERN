@@ -33,3 +33,9 @@ Form.Label {
 .custom-card:hover {
   transform: translateY(10px);
 }
+
+.toast-body {
+  font-size: large;
+
+  transition: 1s ease;
+}

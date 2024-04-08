@@ -5,7 +5,6 @@ import {
   FaCog,
   FaShieldAlt,
   FaFileAlt,
-  FaRocket,
   FaPhoneAlt,
 } from "react-icons/fa";
 
@@ -58,14 +57,6 @@ export const About = () => {
               authentication mechanisms, we prioritize safeguarding your data
               and ensuring confidentiality at every step.
             </p>
-            <h2 className="display-2 mb-4 text-white">
-              Contact Us <FaPhoneAlt />
-            </h2>
-            <p className="fs-3 text-white">
-              Have questions or inquiries? Were here to help! Reach out to our
-              team via our contact page, and well be delighted to assist you.
-            </p>
-            <br />
           </Col>
           <Col className=" mt-5">
             <br />
@@ -79,15 +70,11 @@ export const About = () => {
             </p>
             <br />
             <h2 className="display-2 mb-4 text-white">
-              Get Started <FaRocket />
+              Contact Us <FaPhoneAlt />
             </h2>
             <p className="fs-3 text-white">
-              Ready to embark on your journey with [Your Project Name]? Contact
-              us today to learn more about how our innovative platform can
-              elevate your web development experience. Whether youre a startup
-              looking to make your mark or an established enterprise seeking to
-              stay ahead of the curve, [Your Project Name] is here to help you
-              succeed.
+              Have questions or inquiries? Were here to help! Reach out to our
+              team via our contact page, and well be delighted to assist you.
             </p>
             <br />
           </Col>
