@@ -36,3 +36,7 @@ li {
 .active {
   color: blue !important; /* Set active color to blue */
 }
+
+.navbar-toggler {
+  background-color: white !important; /* Set text color to white */
+}

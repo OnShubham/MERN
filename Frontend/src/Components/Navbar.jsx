@@ -14,11 +14,11 @@ export const Navbar = () => {
         <BootstrapNavbar.Brand
           as={NavLink}
           to="/"
-          className="navbar-brand text-white"
+          className="navbar-brand text-white fs-2"
         >
           <FaReact /> Tech-Tide
         </BootstrapNavbar.Brand>
-        <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
+        <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav bg-white" />
         <BootstrapNavbar.Collapse
           id="basic-navbar-nav" // Fixed the extra space issue
           className="justify-content-end"
