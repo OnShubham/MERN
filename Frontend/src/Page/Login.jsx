@@ -105,7 +105,7 @@ export const Login = () => {
               style={{ width: "100%", height: "5rem" }}
               type="Login"
             >
-              Register 
+              Login 
 
             </Button>
           </Form>
