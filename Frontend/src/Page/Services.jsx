@@ -1,59 +1,84 @@
 import { useState, useEffect } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 
 export const Services = () => {
-  // State to store the fetched services
   const [services, setServices] = useState([]);
 
-  // Function to fetch services from the API
   const fetchServices = async () => {
     try {
       const response = await fetch("http://localhost:5000/api/data/services", {
         method: "GET",
-      }); // Assuming your API is served from the same host
+      });
       const data = await response.json();
-      setServices(data); // Update state with fetched services
+      setServices(data);
     } catch (error) {
       console.error("Error fetching services:", error);
     }
   };
 
-  // Fetch services when the component mounts
   useEffect(() => {
     fetchServices();
-  }, []); // Empty dependency array to fetch services only once when the component mounts
+  }, []);
 
   return (
     <div className="container">
-      <div className="row">
-        {/* Map through the fetched services and render a card for each service */}
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gap-5 m-2">
         {services.map((service, index) => (
-          <div className="col-lg-4 col-md-6 "  key={index}>
-            <Card className=""  >
+          <div className="col" key={index}>
+            <Card className="border-0">
               <Card.Img
                 variant="top"
-                src={"images/design.png"} // Assuming your service object has an 'image' field
+                src={"images/design.png"}
                 className="p-5"
+                style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "" }}
                 alt="Card image"
               />
-              <Card.Body className="m-3">
-                <Card.Title>
-                  {" "}
-                  <h1 style={{ color: "black" }}> {service.title}</h1>
-                </Card.Title>{" "}
-                {/* Assuming your service object has a 'title' field */}
-                <div className="row">
-                  <div className="col-md-6">
-                    <Card.Text>{service.description}</Card.Text>{" "}
-                    {/* Assuming your service object has a 'description' field */}
-                    <Card.Text>{service.price}</Card.Text>{" "}
-                    {/* Assuming your service object has a 'price' field */}
-                  </div>
-                  <div className="col-md-6 ">
-                    <Card.Text>{service.provider}</Card.Text>{" "}
-                    {/* Assuming your service object has a 'provider' field */}
-                  </div>
-                </div>
+              <Card.Body className="p-3">
+                <Row>
+                  {/* Left side: Title and Description */}
+                  <Col md={6}>
+                    <Card.Title>
+                      <h2
+                        style={{
+                          color: "white",
+                          fontSize: "2rem",
+                          background: "blue",
+                          margin: "",
+                          padding: "10px",
+                          borderRadius: "12px",
+                        }}
+                      >
+                        {service.title}{" "}
+                      </h2>
+                    </Card.Title>
+                  </Col>
+
+                  {/* Right side: Price and Provider */}
+                  <Col md={"4"}>
+                    <Row>
+                      <Col>
+                        <Card.Text>
+                          <h4 style={{ color: "black" }}>{service.price}</h4>
+                        </Card.Text>
+                      </Col>
+                      <Col>
+                        <Card.Text>
+                          <small style={{ color: "black" }}>
+                            {service.provider}
+                          </small>
+                        </Card.Text>
+                      </Col>
+                    </Row>
+                  </Col>
+
+                  <hr style={{ color: "black" }} />
+                  {/* description */}
+                  <Card.Text>
+                    <small style={{ color: "black" }}>
+                      {service.description}
+                    </small>
+                  </Card.Text>
+                </Row>
               </Card.Body>
             </Card>
           </div>
