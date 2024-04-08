@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-
+import {} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../store/auth";
-
-
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -14,10 +12,6 @@ export const Register = () => {
     email: "",
     password: "",
   });
-
-
-  
-
 
   const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
@@ -44,10 +38,9 @@ export const Register = () => {
       });
 
       if (response.ok) {
-
         const data = await response.json();
-        console.log( " res from server", data);
-    
+        console.log(" res from server", data);
+
         alert("Register successful");
         storeTokenInLS(data.token);
         setFormData({
@@ -79,15 +72,16 @@ export const Register = () => {
           xs={8}
           md={4}
           style={{ color: "white", margin: "6rem" }}
-          className="shadow p-2 "
+          className=" "
         >
-          <Form onSubmit={handleSubmit} className="p-5" style={{}}>
-            <h1 className="">Register</h1>
+          <Form onSubmit={handleSubmit} className="" style={{}}>
+            <h1 style={{ fontSize: "5rem" }}>Register </h1>
             <div className="fs-5">
               <Form.Group controlId="formusername">
-                <Form.Label>First Name</Form.Label>
+                <Form.Label className="fs-2">First Name</Form.Label>
                 <Form.Control
                   type="text"
+                  className="fs-3 mb-2"
                   placeholder="Enter first name"
                   name="username"
                   value={formData.username}
@@ -96,10 +90,11 @@ export const Register = () => {
               </Form.Group>
 
               <Form.Group controlId="formphone">
-                <Form.Label>Last Phone</Form.Label>
+                <Form.Label className="fs-3 mb-2">Last Phone</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter last name"
+                  className="fs-3 mb-2"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
@@ -107,10 +102,11 @@ export const Register = () => {
               </Form.Group>
 
               <Form.Group controlId="formEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label className="fs-3 mb-2"> Email address</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
+                  className="fs-3 mb-2"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
@@ -118,9 +114,10 @@ export const Register = () => {
               </Form.Group>
 
               <Form.Group controlId="formPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label className="fs-3 mb-2">Password</Form.Label>
                 <Form.Control
                   type="password"
+                  className="fs-3 mb-2"
                   placeholder="Password"
                   name="password"
                   value={formData.password}
@@ -130,8 +127,13 @@ export const Register = () => {
             </div>
 
             <br />
-            <Button variant="primary" type="submit">
-              Submit
+            <Button
+              variant="primary"
+              className="fs-2"
+              style={{ width: "100%", height: "5rem" }}
+              type="submit"
+            >
+              Register
             </Button>
           </Form>
         </Col>

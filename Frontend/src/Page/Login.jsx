@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import {  } from "react-icons/fa";
 
 const URL = "http://localhost:5000/api/auth/login";
 
@@ -70,12 +71,13 @@ export const Login = () => {
           className="shadow"
         >
           <Form onSubmit={handleSubmit} className="p-4" style={{}}>
-            <h1 className="">Login</h1>
+          <h1 style={{ fontSize: "5rem" }}>Login </h1>
             <div className="fs-5">
               <Form.Group controlId="formEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label  className="fs-3 mb-2">Email address</Form.Label>
                 <Form.Control
                   type="email"
+                  className="fs-3 mb-2"
                   placeholder="Enter email"
                   name="email"
                   value={formData.email}
@@ -84,9 +86,10 @@ export const Login = () => {
               </Form.Group>
 
               <Form.Group controlId="formPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label  className="fs-3 mb-2">Password</Form.Label>
                 <Form.Control
                   type="password"
+                  className="fs-3 mb-2"
                   placeholder="Password"
                   name="password"
                   value={formData.password}
@@ -96,8 +99,14 @@ export const Login = () => {
             </div>
 
             <br />
-            <Button variant="primary" type="submit">
-              Submit
+            <Button
+              variant="primary"
+              className="fs-2"
+              style={{ width: "100%", height: "5rem" }}
+              type="Login"
+            >
+              Register 
+
             </Button>
           </Form>
         </Col>

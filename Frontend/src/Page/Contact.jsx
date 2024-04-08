@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Image, Button, Container, Row, Col } from "react-bootstrap";
+import {} from "react-icons/fa";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -48,69 +49,91 @@ export const Contact = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <Form onSubmit={handleSubmit} className="justify-content-center">
-        {/* name */}
-        <Form.Group controlId="formName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+    <div>
+      {/*  */}
 
-        {/* phone */}
+      <Container className="">
+        <Row className="mt-5 gap-3  ">
+          {/* Column with Image */}
+          <Col md={4} xs={10}>
+            <Image src="/images/info.png" fluid />
+          </Col>
 
-        <Form.Group controlId="fromphone">
-          <Form.Label>Phone</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Enter your Number"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+          {/* Column with Form */}
+          <Col md={6} className="p-5 ">
+            <h1 style={{fontSize:"5rem"}}>Contact </h1>
+            <Form
+              onSubmit={handleSubmit}
+              className="justify-content-center gap-2"
+            >
+              {/* name */}
+              <Form.Group controlId="formName">
+                <Form.Label className="fs-2">Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  className="fs-2"
+                  placeholder="Enter your name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
 
-        {/* email */}
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+              {/* phone */}
 
-        {/* message */}
+              <Form.Group controlId="fromphone">
+                <Form.Label className="fs-2">Phone</Form.Label>
+                <Form.Control
+                  className="fs-2"
+                  type="number"
+                  placeholder="Enter your Number"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
 
-        <Form.Group controlId="formMessage">
-          <Form.Label>Message</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="Enter your message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+              {/* email */}
+              <Form.Group controlId="formEmail">
+                <Form.Label className="fs-2">Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  name="email"
+                  className="fs-2"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
 
-        <br />
+              {/* message */}
 
-        <Button variant="primary" type="submit">
-          Send
-        </Button>
-      </Form>
+              <Form.Group controlId="formMessage">
+                <Form.Label className="fs-2">Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  className="fs-2"
+                  rows={3}
+                  placeholder="Enter your message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+
+              <br />
+
+              <Button variant="primary" type="submit">
+                Send
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
