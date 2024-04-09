@@ -6,7 +6,7 @@ export const Services = () => {
 
   const fetchServices = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/data/services" | "https://mern-g2f2.onrender.com/", {
+      const response = await fetch("https://mern-g2f2.onrender.com/" | "", {
         method: "GET",
       });
       const data = await response.json();
