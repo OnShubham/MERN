@@ -5,26 +5,24 @@ const ConnectDB = require("./util/db");
 
 const authRouter = require("./router/auth");
 const ContactRouter = require("./router/contact-router");
-const ServicesRouter = require("./router/serivices-router");
+const ServicesRouter = require("./router/services-router"); // fixed typo
 
 const errorMiddleware = require("./middleware/error-middleware");
 
 const app = express();
 
-app.use(cors(corsOptions));
-
-var corsOptions = {
-  // origin: "http://localhost:5173",
-  // origin: "https://mern-livid-phi.vercel.app/",
+const corsOptions = {
+  origin: ["http://localhost:5173", "https://mern-livid-phi.vercel.app"], // allowed origins
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
+app.use(cors(corsOptions)); // apply CORS middleware with options
 app.use(express.json());
-app.use(errorMiddleware);
+app.use(errorMiddleware); // ensure errorMiddleware is used after json middleware
 
-// define a router
+// define routers
 app.use("/api/auth", authRouter);
 app.use("/api/form", ContactRouter);
 app.use("/api/data", ServicesRouter);
@@ -35,10 +33,12 @@ app.get("/", (req, res) => {
 
 app.use(errorMiddleware);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 ConnectDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`Sever Is Runinng at port: ${PORT}`);
+    console.log(`Server is running at port: ${PORT}`);
   });
+}).catch(err => {
+  console.error("Failed to connect to database", err);
 });
