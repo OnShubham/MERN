@@ -20,6 +20,7 @@ export const AuthProvider = ({ children }) => {
   console.log("token", token);
   console.log("isLoggedin ", isLoggedIn);
 
+  
   //   to check whether is loggedIn or not
   const LogoutUser = () => {
     setToken("");

@@ -30,7 +30,7 @@ export const Register = () => {
     console.log(formData);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+      const response = await fetch(`https://mern-qzro-backend.vercel.app//api/auth/register`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",

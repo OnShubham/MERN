@@ -24,7 +24,7 @@ export const Contact = () => {
     console.log(formData);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/form/contact`, {
+      const response = await fetch(`https://mern-qzro-backend.vercel.app//api/form/contact`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
