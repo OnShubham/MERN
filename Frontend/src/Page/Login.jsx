@@ -5,7 +5,7 @@ import { useAuth } from "../store/auth";
 import {} from "react-icons/fa";
 import { toast } from "react-toastify";
 
-const URL = "http://localhost:5000/api/auth/login";
+const URL = "https://mern-qzro-backend.vercel.app//api/auth/login";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -39,6 +39,8 @@ export const Login = () => {
 
       console.log("login", response);
 
+
+      
       if (response.ok) {
         const data = await response.json();
 
